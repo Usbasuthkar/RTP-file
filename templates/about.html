@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Blood Bank Management</title>
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Blood Bank Management</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="about-us">
+            <h2>About Us</h2>
+            <p>Welcome to <strong>Blood Bank Management</strong>, a leading organization dedicated to ensuring a reliable and safe blood supply for those in need. Our mission is to manage the collection, testing, processing, and distribution of blood and blood products to hospitals and medical facilities. We are committed to maintaining the highest standards of quality and safety, ensuring that every unit of blood collected meets stringent guidelines.</p>
+        </section>
+        <section class="importance">
+            <h2>The Importance of Blood Donation</h2>
+            <p>Blood donation is a vital act that saves lives. Every two seconds, someone in the world needs blood. Whether it’s for surgeries, cancer treatments, chronic illnesses, or traumatic injuries, the need for blood is constant. Here are some key reasons why blood donation is crucial:</p>
+            <ul>
+                <li><strong>Saving Lives</strong>: One donation can save up to three lives.</li>
+                <li><strong>Supporting Medical Treatments</strong>: Blood is essential for surgeries, cancer treatments, and managing chronic illnesses.</li>
+                <li><strong>Emergency Readiness</strong>: A robust blood supply helps prepare for emergencies and disasters.</li>
+            </ul>
+        </section>
+        <section class="contact-form">
+            <h2>Contact Us</h2>
+            <form action="/submit_contact" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blood Bank Management. All rights reserved.</p>
+    </footer>
+</body>
+</html>

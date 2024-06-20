@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Blood Donation Prediction</h1>
+        <form id="prediction-form" action="/predict" method="POST">
+            <label for="recency">Months since last donation:</label>
+            <input type="number" id="recency" name="recency" required><br><br>
+            
+            <label for="frequency">Total number of donations:</label>
+            <input type="number" id="frequency" name="frequency" required><br><br>
+            
+            <label for="monetary">Total volume of blood donated (c.c.):</label>
+            <input type="number" id="monetary" name="monetary" required><br><br>
+            
+            <label for="time">Months since first donation:</label>
+            <input type="number" id="time" name="time" required><br><br>
+            
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
+

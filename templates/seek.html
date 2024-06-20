@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Locator</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .controls {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blood Bank Locator</h1>
+    <div class="controls">
+        <select id="loc">
+            <option value="">Select a location</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Rangareddy">Rangareddy</option>
+            <option value="Medchal Malkajgiri">Medchal Malkajgiri</option>
+            <option value="Sangareddy">Sangareddy</option>
+        </select>
+        <select id="Blood">
+            <option value="">Select blood type</option>
+            <option value="AB+ve">AB+ve</option>
+            <option value="AB-ve">AB-ve</option>
+            <option value="A+ve">A+ve</option>
+            <option value="A-ve">A-ve</option>
+            <option value="B+ve">B+ve</option>
+            <option value="B-ve">B-ve</option>
+            <option value="O+ve">O+ve</option>
+            <option value="O-ve">O-ve</option>
+        </select>
+        <select id="type">
+            <option value="">Select type</option>
+            <option value="Whole Blood">Whole Blood</option>
+            <option value="Platelet">Platelet</option>
+            <option value="Plasma">Plasma</option>
+        </select>
+        <button id="searchButton">Search</button>
+    </div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Blood bank data
+        const bloodBanks = {
+            "Hyderabad": {
+                "AB+ve": [
+                    { "name": "Niloufer Hospital for Women and Children", "coordinates": [17.3916, 78.4709] },
+                    { "name": "Nizam's Institute of Medical Sciences Hospital Blood Centre", "coordinates": [17.4205, 78.4483] },
+                    { "name": "Govt. Maternity Hospital Blood Centre Petlaburz", "coordinates": [17.3696, 78.4768] }
+                ],
+                "A+ve": [
+                    { "name": "Blood Bank, Osmania General Hospital", "coordinates": [17.3719, 78.4737] },
+                    { "name": "Gandhi Hospital Blood Centre", "coordinates": [17.4085, 78.4955] },
+                    { "name": "Aarogya Voluntary Blood Centre", "coordinates": [17.3947, 78.5024] },
+                    { "name": "Osmania General Hospital Blood Centre", "coordinates": [17.3719, 78.4737] },
+                    { "name": "Jeevandhara Voluntary Blood Centre", "coordinates": [17.4438, 78.4989] },
+                    { "name": "Apollo Hospitals", "coordinates": [17.4335, 78.4958] },
+                    { "name": "Asian Institute of Gastroenterology Blood Centre", "coordinates": [17.4216, 78.4595] },
+                    { "name": "Olive Hospital Blood Centre", "coordinates": [17.3953, 78.4403] },
+                    { "name": "Apollo DRDO Hospital Blood Centre", "coordinates": [17.3214, 78.5246] },
+                    { "name": "Govt. Maternity Hospital Blood Centre Petlaburz", "coordinates": [17.3696, 78.4768] },
+                    { "name": "Health Agriculture Rural Development Society Blood Centre", "coordinates": [17.3916, 78.4709] },
+                    { "name": "Vivekananda Blood Centre", "coordinates": [17.3953, 78.4403] },
+                    { "name": "Military Hospital Blood Centre", "coordinates": [17.4670, 78.5011] }
+                ],
+                "A-ve": [
+                    { "name": "Nizam's Institute of Medical Sciences Hospital Blood Centre", "coordinates": [17.4205, 78.4483] },
+                    { "name": "South Central Railway Hospital", "coordinates": [17.4268, 78.5221] },
+                    { "name": "Military Hospital Blood Centre", "coordinates": [17.4670, 78.5011] }
+                ],
+                "B+ve": [
+                    { "name": "Blood Bank, Osmania General Hospital", "coordinates": [17.3719, 78.4737] },
+                    { "name": "Gandhi Hospital Blood Centre", "coordinates": [17.4085, 78.4955] },
+                    { "name": "Vivekananda Blood Centre", "coordinates": [17.3953, 78.4403] }
+                ],
+                "B-ve": [
+                    { "name": "Gandhi Hospital Blood Centre", "coordinates": [17.4085, 78.4955] }
+                ],
+                "O+ve": [
+                    { "name": "Niloufer Hospital for Women and Children", "coordinates": [17.3916, 78.4709] },
+                    { "name": "Gandhi Hospital Blood Centre", "coordinates": [17.4085, 78.4955] }
+                ],
+                "O-ve": [
+                    { "name": "Nizam's Institute of Medical Sciences Hospital Blood Centre", "coordinates": [17.4205, 78.4483] }
+                ]
+            },
+            "Rangareddy": {
+                "AB+ve": [
+                    { "name": "Bhaskara Medical College And General Hospital Blood Centre", "coordinates": [17.3554, 78.3439] }
+                ],
+                "AB-ve": [
+                    { "name": "Bhaskara Medical College And General Hospital Blood Centre", "coordinates": [17.3554, 78.3439] }
+                ],
+                "A+ve": [
+                    { "name": "Bhaskara Medical College And General Hospital Blood Centre", "coordinates": [17.3554, 78.3439] },
+                    { "name": "Government District Hospital Blood Centre", "coordinates": [17.4501, 78.3738] }
+                ],
+                "A-ve": [
+                    { "name": "Government District Hospital Blood Centre", "coordinates": [17.4501, 78.3738] }
+                ],
+                "B+ve": [
+                    { "name": "Government District Hospital Blood Centre", "coordinates": [17.4501, 78.3738] }
+                ],
+                "B-ve": [
+                    { "name": "Bhaskara Medical College And General Hospital Blood Centre", "coordinates": [17.3554, 78.3439] }
+                ],
+                "O+ve": [
+                    { "name": "Bhaskara Medical College And General Hospital Blood Centre", "coordinates": [17.3554, 78.3439] }
+                ],
+                "O-ve": [
+                    { "name": "Government District Hospital Blood Centre", "coordinates": [17.4501, 78.3738] }
+                ]
+            },
+            "Medchal Malkajgiri": {
+                "AB+ve": [
+                    { "name": "RADNYA BLOOD CENTRE", "coordinates": [17.5110, 78.4604] },
+                    { "name": "RBM BLOOD CENTRE", "coordinates": [17.4066, 78.5787] }
+                ],
+                "AB-ve": [
+                    { "name": "Esi Hospital, Nacharam", "coordinates": [17.4236, 78.5474] }
+                ],
+                "A+ve": [
+                    { "name": "telangana vaidya vidhana parishad blood bank", "coordinates": [17.4508, 78.6872] },
+                    { "name": "Aditya Hospital Blood Centre", "coordinates": [17.4046, 78.5596] },
+                    { "name": "Esi Hospital, Nacharam", "coordinates": [17.4236, 78.5474] },
+                    { "name": "Asian blood centre", "coordinates": [17.4793, 78.5473] },
+                    { "name": "RBM BLOOD CENTRE", "coordinates": [17.4066, 78.5787] },
+                    { "name": "RADNYA BLOOD CENTRE", "coordinates": [17.5110, 78.4604] }
+                ],
+                "A-ve": [
+                    { "name": "Aditya Hospital Blood Centre", "coordinates": [17.4046, 78.5596] }
+                ],
+                "B+ve": [
+                    { "name": "Dr. Ronald Ross Health Society Blood Centre", "coordinates": [17.4912, 78.3994] },
+                    { "name": "telangana vaidya vidhana parishad blood bank", "coordinates": [17.4508, 78.6872] },
+                    { "name": "Life Voluntary Blood Centre", "coordinates": [17.4934, 78.3990] },
+                    { "name": "MSN Blood Centre", "coordinates": [17.4075, 78.5580] },
+                    { "name": "Mamata Academy Of Medical Sciences", "coordinates": [17.5353, 78.3618] },
+                    { "name": "Esi Hospital, Nacharam", "coordinates": [17.4236, 78.5474] },
+                    { "name": "CMR Institute of Medical Sciences and Hospital", "coordinates": [17.5913, 78.4970] },
+                    { "name": "RADNYA BLOOD CENTRE", "coordinates": [17.5110, 78.4604] },
+                    { "name": "RBM BLOOD CENTRE", "coordinates": [17.4066, 78.5787] },
+                    { "name": "Asian blood centre", "coordinates": [17.4793, 78.5473] }
+                ],
+                "B-ve": [
+                    { "name": "Aditya Hospital Blood Centre", "coordinates": [17.4046, 78.5596] }
+                ],
+                "O+ve": [
+                    { "name": "telangana vaidya vidhana parishad blood bank", "coordinates": [17.4508, 78.6872] },
+                    { "name": "Aditya Hospital Blood Centre", "coordinates": [17.4046, 78.5596] },
+                    { "name": "ARUNDHATHI HOSPITAL BLOOD CENTER", "coordinates": [17.5826, 78.4078] },
+                    { "name": "CMR Institute of Medical Sciences and Hospital", "coordinates": [17.5913, 78.4970] },
+                    { "name": "Esi Hospital, Nacharam", "coordinates": [17.4236, 78.5474] },
+                    { "name": "Mamata Academy Of Medical Sciences", "coordinates": [17.5353, 78.3618] },
+                    { "name": "Mediciti Institute Of Medical Sciences Blood Centre", "coordinates": [17.6675, 78.4915] },
+                    { "name": "Asian blood centre", "coordinates": [17.4793, 78.5473] },
+                    { "name": "RBM BLOOD CENTRE", "coordinates": [17.4066, 78.5787] },
+                    { "name": "RADNYA BLOOD CENTRE", "coordinates": [17.5110, 78.4604] }
+                ]
+            },
+            "Sangareddy": {
+                "A+ve": [
+                    { "name": "Mnr Medical College & Hospital Blood Centre", "coordinates": [17.6287, 78.0902] }
+                ],
+                "B+ve": [
+                    { "name": "Mnr Medical College & Hospital Blood Centre", "coordinates": [17.6287, 78.0902] },
+                    { "name": "Sree Balaji Hospital Blood Bank", "coordinates": [17.5832, 78.0470] }
+                ],
+                "O+ve": [
+                    { "name": "Mnr Medical College & Hospital Blood Centre", "coordinates": [17.6287, 78.0902] },
+                    { "name": "Sree Balaji Hospital Blood Bank", "coordinates": [17.5832, 78.0470] },
+                    { "name": "Maheshwara Medical College & Maheshwara Hospital (Alleti Shrunitha Educational Society)", "coordinates": [17.5470, 78.1385] },
+                    { "name": "LIFE VOLUNTARY BLOOD CENTRE", "coordinates": [17.6250, 78.1033] }
+                ]
+            }
+        };
+
+        // Initialize the map
+        const map = L.map('map').setView([17.3850, 78.4867], 12);
+
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Function to update map with markers
+        function updateMap(location, bloodType) {
+            // Clear existing markers
+            map.eachLayer((layer) => {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer);
+                }
+            });
+
+            // Add new markers
+            if (bloodBanks[location] && bloodBanks[location][bloodType]) {
+                const locations = bloodBanks[location][bloodType];
+                locations.forEach(loc => {
+                    L.marker(loc.coordinates).addTo(map)
+                        .bindPopup(`<b>${loc.name}</b><br>Coordinates: ${loc.coordinates.join(', ')}`);
+                });
+                // Center map on the first location
+                if (locations.length > 0) {
+                    map.setView(locations[0].coordinates, 12);
+                }
+            } else {
+                alert('No locations found for the selected options.');
+            }
+        }
+
+        // Add event listener to the search button
+        document.getElementById('searchButton').addEventListener('click', () => {
+            const location = document.getElementById('loc').value;
+            const bloodType = document.getElementById('Blood').value;
+            const type = document.getElementById('type').value;
+
+            if (location && bloodType) {
+                updateMap(location, bloodType);
+            } else {
+                alert('Please select both location and blood type.');
+            }
+        });
+    </script>
+</body>
+</html>
+
+

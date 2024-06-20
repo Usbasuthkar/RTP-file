@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Hospital Search</title>
+    <script>
+        function searchHospitals() {
+            var location = document.getElementById("locationSelect").value;
+            if (location) {
+                var query = encodeURIComponent(location + " hospitals");
+                var url = "https://www.google.com/maps/search/?api=1&query=" + query;
+                window.open(url, "_blank");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Select a Location to Find Hospitals</h1>
+    <div>
+        <select id="locationSelect">
+            <option value="">Select a location</option>
+            <optgroup label="Ameerpet">
+                <option value="Ameerpet">Ameerpet</option>
+                <option value="Begumpet">Begumpet</option>
+                <option value="SR Nagar">SR Nagar</option>
+                <option value="Prakash Nagar">Prakash Nagar</option>
+                <option value="Punjagutta">Punjagutta</option>
+                <option value="Balkampet">Balkampet</option>
+            </optgroup>
+            <optgroup label="Sanathnagar">
+                <option value="Sanathnagar">Sanathnagar</option>
+                <option value="Bharat Nagar">Bharat Nagar</option>
+                <option value="Erragadda">Erragadda</option>
+                <option value="Borabanda">Borabanda</option>
+                <option value="Moti Nagar">Moti Nagar</option>
+                <option value="Nehru Nagar">Nehru Nagar</option>
+            </optgroup>
+            <optgroup label="Khairatabad">
+                <option value="Khairtabad">Khairtabad</option>
+                <option value="Somajiguda">Somajiguda</option>
+                <option value="Raj Bhavan Road">Raj Bhavan Road</option>
+                <option value="Lakdikapool">Lakdikapool</option>
+                <option value="Saifabad">Saifabad</option>
+                <option value="A.C. Guards">A.C. Guards</option>
+                <option value="Masab Tank">Masab Tank</option>
+                <option value="Chintal Basti">Chintal Basti</option>
+            </optgroup>
+            <optgroup label="Musheerabad">
+                <option value="Musheerabad">Musheerabad</option>
+                <option value="Chikkadpally">Chikkadpally</option>
+                <option value="Himayatnagar">Himayatnagar</option>
+                <option value="Ashok Nagar">Ashok Nagar</option>
+                <option value="Domalguda">Domalguda</option>
+                <option value="Hyderguda">Hyderguda</option>
+                <option value="Ramnagar">Ramnagar</option>
+                <option value="Azamabad">Azamabad</option>
+                <option value="Adikmet">Adikmet</option>
+                <option value="Nallakunta">Nallakunta</option>
+                <option value="Shanker Mutt">Shanker Mutt</option>
+                <option value="RTC X Roads">RTC X Roads</option>
+                <option value="Gandhi Nagar">Gandhi Nagar</option>
+                <option value="Bagh Lingampally">Bagh Lingampally</option>
+                <option value="Vidyanagar">Vidyanagar</option>
+                <option value="Nayaranguda">Naryanguda</option>
+            </optgroup>
+            <optgroup label="Amberpet">
+                <option value="Amberpet">Amberpet</option>
+                <option value="Tilaknagar">Tilaknagar</option>
+                <option value="Golnaka">Golnaka</option>
+                <option value="Barkatpura">Barkatpura</option>
+                <option value="Shivam Road">Shivam Road</option>
+                <option value="Jamia Osmania">Jamia Osmania</option>
+                <option value="Kachiguda">Kachiguda</option>
+                <option value="Badichowdi">Badichowdi</option>
+            </optgroup>
+            <optgroup label="Nampally">
+                <option value="Nampally">Nampally</option>
+                <option value="Abids">Abids</option>
+                <option value="Aghapura">Aghapura</option>
+                <option value="Koti">Koti</option>
+                <option value="Bank Street">Bank Street</option>
+                <option value="Bogguljunta">Bogguljunta</option>
+            </optgroup>
+            <optgroup label="Secunderabad">
+                <option value="Secunderabad">Secunderabad</option>
+                <option value="Chilkalguda">Chilkalguda</option>
+                <option value="Kavadiguda">Kavadiguda</option>
+                <option value="MG Road (James Street)">MG Road (James Street)</option>
+                <option value="Madannapet">Madannapet</option>
+                <option value="Minister Road">Minister Road</option>
+                <option value="Mylargadda">Mylargadda</option>
+                <option value="Namalagundu">Namalagundu</option>
+                <option value="Padmarao Nagar">Padmarao Nagar</option>
+                <option value="Pan bazar">Pan bazar</option>
+                <option value="Parsigutta">Parsigutta</option>
+                <option value="Patny">Patny</option>
+                <option value="Rani Gunj">Rani Gunj</option>
+                <option value="RP Road">RP Road</option>
+                <option value="Sindhi Colony">Sindhi Colony</option>
+                <option value="Sitaphalmandi">Sitaphalmandi</option>
+                <option value="Tarnaka">Tarnaka</option>
+                <option value="Warsiguda">Warsiguda</option>
+                <option value="Addagutta">Addagutta</option>
+                <option value="Tukaramgate">Tukaramgate</option>
+            </optgroup>
+            <optgroup label="Secunderabad Cantonment">
+                <option value="Secunderabad Cantonment">Secunderabad Cantonment</option>
+                <option value="Bowenpally">Bowenpally</option>
+                <option value="Karkhana">Karkhana</option>
+                <option value="Marredpally">Marredpally</option>
+                <option value="Sikh Village">Sikh Village</option>
+                <option value="Trimulgherry">Trimulgherry</option>
+                <option value="Vikrampuri">Vikrampuri</option>
+            </optgroup>
+            <optgroup label="Financial District">
+                <option value="Gachibowli">Gachibowli</option>
+                <option value="Gowlidoddi">Gowlidoddi</option>
+                <option value="Nanakramguda">Nanakramguda</option>
+            </optgroup>
+            <optgroup label="HITEC City">
+                <option value="HITEC City">HITEC City</option>
+                <option value="Madhapur">Madhapur</option>
+                <option value="Kondapur">Kondapur</option>
+                <option value="Kothaguda">Kothaguda</option>
+            </optgroup>
+            <optgroup label="Jubilee Hills">
+                <option value="Jubilee Hills">Jubilee Hills</option>
+                <option value="Banjara Hills">Banjara Hills</option>
+                <option value="Film Nagar">Film Nagar</option>
+                <option value="Yousufguda">Yousufguda</option>
+                <option value="Srinagar Colony">Srinagar Colony</option>
+            </optgroup>
+            <optgroup label="Serilingampally">
+                <option value="Serilingampally">Serilingampally</option>
+                <option value="Chanda Nagar">Chanda Nagar</option>
+                <option value="Allwyn Colony">Allwyn Colony</option>
+                <option value="Hafeezpet">Hafeezpet</option>
+                <option value="Madinaguda">Madinaguda</option>
+                <option value="Miyapur">Miyapur</option>
+            </optgroup>
+            <optgroup label="Kukatpally">
+                <option value="Kukatpally">Kukatpally</option>
+                <option value="Allwyn Colony">Allwyn Colony</option>
+                <option value="Bachupally">Bachupally</option>
+                <option value="KPHB">KPHB</option>
+                <option value="Nizampet">Nizampet</option>
+                <option value="Pragathi Nagar">Pragathi Nagar</option>
+                <option value="Moosapet">Moosapet</option>
+                <option value="Mallampet">Mallampet</option>
+            </optgroup>
+            <optgroup label="Patancheru">
+                <option value="Patancheru">Patancheru</option>
+                <option value="BHEL Township">BHEL Township</option>
+                <option value="RC Puram">RC Puram</option>
+                <option value="Ameenpur">Ameenpur</option>
+                <option value="Beeramguda">Beeramguda</option>
+                <option value="Kistareddypet">Kistareddypet</option>
+                <option value="IDA Bollaram">IDA Bollaram</option>
+                <option value="Medical Devices Park">Medical Devices Park</option>
+            </optgroup>
+            <optgroup label="Old City">
+                <option value="Afzal Gunj">Afzal Gunj</option>
+                <option value="Aliabad">Aliabad</option>
+                <option value="Alijah Kotla">Alijah Kotla</option>
+                <option value="Asif Nagar">Asif Nagar</option>
+                <option value="Azampura">Azampura</option>
+                <option value="Barkas">Barkas</option>
+                <option value="Bazarghat">Bazarghat</option>
+                <option value="Begum Bazaar">Begum Bazaar</option>
+                <option value="Chaderghat">Chaderghat</option>
+                <option value="Chanchalguda">Chanchalguda</option>
+                <option value="Chandrayan Gutta">Chandrayan Gutta</option>
+                <option value="Chatta Bazaar">Chatta Bazaar</option>
+                <option value="Dabirpura">Dabirpura</option>
+                <option value="Dar-ul-Shifa">Dar-ul-Shifa</option>
+                <option value="Dhoolpet">Dhoolpet</option>
+                <option value="Edi Bazar">Edi Bazar</option>
+                <option value="Falaknuma">Falaknuma</option>
+                <option value="Karwan">Karwan</option>
+                <option value="Malakpet">Malakpet</option>
+                <option value="Moghalpura">Moghalpura</option>
+                <option value="Jahanuma">Jahanuma</option>
+                <option value="Laad Bazaar">Laad Bazaar</option>
+                <option value="Lal Darwaza">Lal Darwaza</option>
+                <option value="Madina">Madina</option>
+                <option value="Maharajgunj">Maharajgunj</option>
+                <option value="Mehboob ki Mehendi">Mehboob ki Mehendi</option>
+                <option value="Mir Alam Tank">Mir Alam Tank</option>
+                <option value="Mozamjahi Market">Mozamjahi Market</option>
+                <option value="Nawab Saheb Kunta">Nawab Saheb Kunta</option>
+                <option value="Nayapul">Nayapul</option>
+                <option value="Noorkhan Bazar">Noorkhan Bazar</option>
+                <option value="Pisal Banda">Pisal Banda</option>
+                <option value="Purana pul">Purana pul</option>
+                <option value="Putlibowli">Putlibowli</option>
+                <option value="Rein Bazar">Rein Bazar</option>
+                <option value="Shahran Market">Shahran Market</option>
+                <option value="Shah Ali Banda">Shah Ali Banda</option>
+                <option value="Sultan Bazar">Sultan Bazar</option>
+                <option value="Udden Gadda">Udden Gadda</option>
+                <option value="Uppuguda">Uppuguda</option>
+                <option value="Yakutpura">Yakutpura</option>
+            </optgroup>
+            <optgroup label="Balanagar">
+                <option value="Balanagar">Balanagar</option>
+                <option value="Fateh Nagar">Fateh Nagar</option>
+                <option value="Ferozguda">Ferozguda</option>
+                <option value="Old Bowenpally">Old Bowenpally</option>
+                <option value="Hasmathpet">Hasmathpet</option>
+            </optgroup>
+            <optgroup label="Qutbullapur">
+                <option value="Quthbullapur">Quthbullapur</option>
+                <option value="Jeedimetla">Jeedimetla</option>
+                <option value="Jagadgirigutta">Jagadgirigutta</option>
+                <option value="Suraram">Suraram</option>
+                <option value="Pet Basheerabad">Pet Basheerabad</option>
+            </optgroup>
+            <optgroup label="Medchal">
+                <option value="Kompally">Kompally</option>
+                <option value="Medchal">Medchal</option>
+                <option value="Kandlakoya">Kandlakoya</option>
+            </optgroup>
+            <optgroup label="Alwal">
+                <option value="Alwal">Alwal</option>
+                <option value="Lothkunta">Lothkunta</option>
+                <option value="Old Alwal">Old Alwal</option>
+                <option value="Macha Bollaram">Macha Bollaram</option>
+                <option value="Venkatapuram">Venkatapuram</option>
+                <option value="Shamirpet">Shamirpet</option>
+            </optgroup>
+            <optgroup label="Malkajgiri">
+                <option value="Malkajgiri">Malkajgiri</option>
+                <option value="Anandbagh">Anandbagh</option>
+                <option value="Ammuguda">Ammuguda</option>
+                <option value="Gautham Nagar">Gautham Nagar</option>
+                <option value="Kakatiya Nagar">Kakatiya Nagar</option>
+                <option value="Vinayak Nagar">Vinayak Nagar</option>
+                <option value="Moula-Ali">Moula-Ali</option>
+                <option value="Neredmet">Neredmet</option>
+                <option value="Old Neredmet">Old Neredmet</option>
+                <option value="Safilguda">Safilguda</option>
+                <option value="Sainikpuri">Sainikpuri</option>
+                <option value="Yapral">Yapral</option>
+            </optgroup>
+            <optgroup label="Kapra">
+                <option value="Kapra">Kapra</option>
+                <option value="A. S. Rao Nagar">A. S. Rao Nagar</option>
+                <option value="ECIL 'X' Roads">ECIL 'X' Roads</option>
+                <option value="Kamala Nagar">Kamala Nagar</option>
+                <option value="Kushaiguda">Kushaiguda</option>
+                <option value="Cherlapally">Cherlapally</option>
+            </optgroup>
+            <optgroup label="Keesara">
+                <option value="Keesara">Keesara</option>
+                <option value="Nagaram">Nagaram</option>
+                <option value="Dammaiguda">Dammaiguda</option>
+                <option value="Jawaharnagar">Jawaharnagar</option>
+                <option value="Rampally">Rampally</option>
+                <option value="Cheriyal">Cheriyal</option>
+            </optgroup>
+            <optgroup label="Uppal Kalan">
+                <option value="Uppal">Uppal</option>
+                <option value="Habsiguda">Habsiguda</option>
+                <option value="Ramanthapur">Ramanthapur</option>
+                <option value="Boduppal">Boduppal</option>
+                <option value="Nagole">Nagole</option>
+                <option value="Nacharam">Nacharam</option>
+                <option value="Mallapur">Mallapur</option>
+            </optgroup>
+            <optgroup label="Ghatkesar">
+                <option value="Ghatkesar">Ghatkesar</option>
+                <option value="Peerzadiguda">Peerzadiguda</option>
+                <option value="Chengicherla">Chengicherla</option>
+                <option value="Pocharam">Pocharam</option>
+                <option value="Narapally">Narapally</option>
+                <option value="Medipally">Medipally</option>
+            </optgroup>
+            <optgroup label="Dilsukhnagar">
+                <option value="Dilsukhnagar">Dilsukhnagar</option>
+                <option value="Kothapet">Kothapet</option>
+                <option value="Gaddiannaram">Gaddiannaram</option>
+                <option value="Moosarambagh">Moosarambagh</option>
+            </optgroup>
+            <optgroup label="LB Nagar">
+                <option value="L. B. Nagar">L. B. Nagar</option>
+                <option value="Bairamalguda">Bairamalguda</option>
+                <option value="Chintalakunta">Chintalakunta</option>
+                <option value="Vanasthalipuram">Vanasthalipuram</option>
+                <option value="Hastinapuram">Hastinapuram</option>
+            </optgroup>
+            <optgroup label="Saroornagar">
+                <option value="Saroornagar">Saroornagar</option>
+                <option value="Badangpet">Badangpet</option>
+                <option value="Balapur">Balapur</option>
+                <option value="Champapet">Champapet</option>
+                <option value="Jillelguda">Jillelguda</option>
+                <option value="Karmanghat">Karmanghat</option>
+                <option value="Lingojiguda">Lingojiguda</option>
+                <option value="Meerpet">Meerpet</option>
+                <option value="Sanghi Nagar">Sanghi Nagar</option>
+                <option value="Santoshnagar">Santoshnagar</option>
+            </optgroup>
+            <optgroup label="Hayathnagar">
+                <option value="Hayathnagar">Hayathnagar</option>
+                <option value="Ibrahim patnam">Ibrahim patnam</option>
+            </optgroup>
+            <optgroup label="Mehdipatnam">
+                <option value="Mehdipatnam">Mehdipatnam</option>
+                <option value="Toli chowki">Toli chowki</option>
+                <option value="Gudimalkapur">Gudimalkapur</option>
+                <option value="Asif Nagar">Asif Nagar</option>
+                <option value="Langar Houz">Langar Houz</option>
+                <option value="Laxminagar Colony">Laxminagar Colony</option>
+                <option value="Mallepally">Mallepally</option>
+                <option value="Padmanabha Nagar Colony">Padmanabha Nagar Colony</option>
+                <option value="Red Hills">Red Hills</option>
+            </optgroup>
+            <optgroup label="Rajendranagar">
+                <option value="Rajendranagar">Rajendranagar</option>
+                <option value="Attapur">Attapur</option>
+                <option value="Bandlaguda">Bandlaguda</option>
+                <option value="Gandipet">Gandipet</option>
+                <option value="Kismatpur">Kismatpur</option>
+                <option value="Narsingi">Narsingi</option>
+                <option value="Puppalguda">Puppalguda</option>
+            </optgroup>
+            <optgroup label="Shamshabad">
+                <option value="Shamshabad">Shamshabad</option>
+                <option value="Rajiv Gandhi International Airport">Rajiv Gandhi International Airport</option>
+                <option value="Umdanagar">Umdanagar</option>
+            </optgroup>
+        </select>
+        <button onclick="searchHospitals()">Search Hospitals</button>
+    </div>
+</body>
+</html>
